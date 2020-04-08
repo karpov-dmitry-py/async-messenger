@@ -62,7 +62,7 @@ class ServerProtocol(asyncio.Protocol):
 
         depth = min(depth, len(history))
         self.transport.write(f"{self.login}, вот последние {depth} сообщений в нашем чате:\r\n".encode())
-        history_to_show = history[-1:-depth:-1]
+        history_to_show = history[-1:-depth-1:-1]
         for message in history_to_show:
             self.transport.write(message.encode())
 
